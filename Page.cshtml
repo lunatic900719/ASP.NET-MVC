@@ -1,0 +1,53 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<_1081759project.Models.TableFoods1081759>
+
+
+@{
+    ViewBag.Title = "菜單分頁";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<h2>產品資料</h2>
+
+
+<table class="table" action="@Url.Action("Page")">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().foodId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().foodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().foodPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().foodStock)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodStock)
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Page", new { page }))
+

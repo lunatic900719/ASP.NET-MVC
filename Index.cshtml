@@ -1,0 +1,44 @@
+﻿@model _1081759project.Models.CVMFacFood
+
+@{
+    ViewBag.Title = "菜單首頁";
+}
+
+<h2>@ViewBag.factoryName</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        @foreach (var item in Model.factory)
+        {
+            <p>
+                @Html.ActionLink(item.factoryName, "Index", new { fId = item.factoryId })
+            </p>
+        }
+    </div>
+    <div class="col-md-9">
+        <table class="table">
+            <tr>
+                <th>食物編號</th>
+                <th>食物名稱</th>
+                <th>單價</th>
+                <th>存貨量</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.food)
+            {
+                <tr>
+                    <td>@item.foodId</td>
+                    <td>@item.foodName</td>
+                    <td>@item.foodPrice</td>
+                    <td>@item.foodStock</td>
+                    <td>
+                        <a href="@Url.Action("Edit")?foodId=@item.foodId" class="btn btn-warning">編輯</a>
+                        @Html.ActionLink("刪除", "Delete",
+                            new { foodId = item.foodId }, new { onclick = "return confirm('確定刪除嗎？');",
+                            @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

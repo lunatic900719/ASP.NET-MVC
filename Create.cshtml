@@ -1,0 +1,63 @@
+﻿@model IEnumerable<_1081759project.Models.TableFactorys1081759>
+
+@{
+    ViewBag.Title = "菜單新增";
+}
+
+<h2>食物新增</h2>
+<form method="post" action="@Url.Action("Create")">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label for="foodId" class="control-label col-md-2">菜單編號</label>
+            <div class="col-md-10">
+                <input type="text" id="foodId" name="foodId"
+                       class="form-control" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="factoryId" class="control-label col-md-2">菜單項目</label>
+            <div class="col-md-10">
+                <select id="factoryId" name="factoryId" class="form-control">
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.factoryId">@item.factoryName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="foodName" class="control-label col-md-2">菜單名稱</label>
+            <div class="col-md-10">
+                <input type="text" id="foodName" name="foodName"
+                       class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="foodPrice" class="control-label col-md-2">單價</label>
+            <div class="col-md-10">
+                <input type="text" id="foodPrice" name="foodPrice"
+                       class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="foodStock" class="control-label col-md-2">存貨量</label>
+            <div class="col-md-10">
+                <input type="text" id="foodStock" name="foodStock"
+                       class="form-control" required />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="新增" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
